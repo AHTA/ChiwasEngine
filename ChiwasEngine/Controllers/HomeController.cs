@@ -9,6 +9,7 @@ using ChiwasEngine.Filters;
 
 namespace ChiwasEngine.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         //
