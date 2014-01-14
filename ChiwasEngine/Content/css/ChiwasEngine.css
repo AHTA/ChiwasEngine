@@ -1,0 +1,160 @@
+﻿/*
+ * Main navigation
+ *
+ * Turn the `.navbar` at the top of the docs purple.
+ */
+
+.bs-docs-nav {
+  text-shadow: 0 -1px 0 rgba(0,0,0,.15);
+  background-color: #563d7c;
+  border-color: #463265;
+  box-shadow: 0 1px 0 rgba(255,255,255,.1);
+}
+.bs-docs-nav .navbar-collapse {
+  border-color: #463265;
+}
+.bs-docs-nav .navbar-brand {
+  color: #fff;
+}
+.bs-docs-nav .navbar-nav > li > a {
+  color: #cdbfe3;
+}
+.bs-docs-nav .navbar-nav > li > a:hover {
+  color: #fff;
+}
+.bs-docs-nav .navbar-nav > .active > a,
+.bs-docs-nav .navbar-nav > .active > a:hover {
+  color: #fff;
+  background-color: #463265;
+}
+.bs-docs-nav .navbar-toggle {
+  border-color: #563d7c;
+}
+.bs-docs-nav .navbar-toggle:hover {
+  background-color: #463265;
+  border-color: #463265;
+}
+
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+/* Set widths on the navbar form inputs since otherwise they're 100% wide */
+.navbar-form input[type="text"],
+.navbar-form input[type="password"] {
+  width: 180px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Let the jumbotron breathe */
+  .jumbotron {
+    margin-top: 20px;
+  }
+  /* Remove padding from wrapping element since we kick in the grid classes here */
+  .body-content {
+    padding: 0;
+  }
+}
+
+
+/* Page headers 
+-------------------------------------------------- */
+.chf-header {
+  padding: 30px 30px 40px;
+  font-size: 16px;
+  color: #5a5a5a;
+  border-bottom: 1px solid #e5e5e5;
+}
+.chf-header h1 {
+  color: #563d7c;
+}
+.chf-header p {
+  font-weight: 300;
+  line-height: 1.5;
+}
+.chf-header .container {
+  position: relative;
+}
+
+.chf-docs-section + .chf-docs-section {
+  margin-top: 80px;
+}
+
+
+
+/* Docs sidebar
+-------------------------------------------------- */
+
+/* By default it's not affixed in mobile views, so undo that */
+.chf-sidebar.affix {
+  position: static;
+}
+
+/* First level of nav */
+.chf-sidenav {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-top:    10px;
+  padding-bottom: 10px;
+  text-shadow: 0 1px 0 #fff;
+  background-color: #f7f5fa;
+  border-radius: 5px;
+}
+
+/* All levels of nav */
+.chf-sidebar .nav > li > a {
+  display: block;
+  color: #716b7a;
+  padding: 5px 20px;
+}
+.chf-sidebar .nav > li > a:hover,
+.chf-sidebar .nav > li > a:focus {
+  text-decoration: none;
+  background-color: #e5e3e9;
+  border-right: 1px solid #dbd8e0;
+}
+.chf-sidebar .nav > .active > a,
+.chf-sidebar .nav > .active:hover > a,
+.chf-sidebar .nav > .active:focus > a {
+  font-weight: bold;
+  color: #563d7c;
+  background-color: transparent;
+  border-right: 1px solid #563d7c;
+}
+
+/* Nav: second level (shown on .active) */
+.chf-sidebar .nav .nav {
+  display: none; /* Hide by default, but at >768px, show it */
+  margin-bottom: 8px;
+}
+.chf-sidebar .nav .nav > li > a {
+  padding-top:    3px;
+  padding-bottom: 3px;
+  padding-left: 30px;
+  font-size: 90%;
+}
+
+
+/* Old docs callout */
+.chf-Breadcrumbs {
+  padding: 15px 20px;
+  color: #777;
+  background-color: #fafafa;
+  border-bottom: 1px solid #e5e5e5;
+}
+.chf-Breadcrumbs strong {
+  color: #555;
+}
+
+

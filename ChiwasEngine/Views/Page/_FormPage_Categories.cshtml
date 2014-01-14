@@ -1,0 +1,19 @@
+﻿@model IEnumerable<ChiwasEngine.Models.Categories>
+@{
+    ChiwasEngine.Models.ChiwasEngineContext db = new ChiwasEngine.Models.ChiwasEngineContext();
+}
+<div class="form-group">
+    @Html.BSLabelFor("page_categories", "Categories")
+    <div class="col-sm-offset-2 col-sm-10">
+        @foreach (var item in Model)
+        {
+            <div class="checkbox">
+                <label>
+                    @*@Html.CheckBox("category_" + item.category_id.ToString(), false)*@
+                    <input type="checkbox" id="category_@item.category_id" name="category_@item.category_id">
+                    @item.category_name                    
+                </label>                
+            </div>
+        }
+    </div>
+</div>

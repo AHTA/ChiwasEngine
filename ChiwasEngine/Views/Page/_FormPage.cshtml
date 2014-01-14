@@ -1,0 +1,85 @@
+﻿@model ChiwasEngine.Models.Pages
+@using ChiwasEngine.Models;
+@Html.ValidationSummary(true)
+
+<!-- Title/ -->
+<div class="form-group">
+	@Html.BSLabelFor("page_title", "Title")
+	<div class="col-lg-10">
+		@Html.ValidationMessageFor(model => model.page_title)
+		@Html.BSEditorFor(Model.page_title, BSEditorForExtension.BSInputTypes.text, "page_title", "Title")
+	</div>
+</div>
+<!-- /Title -->
+
+<!-- Description/ -->
+<div class="form-group">
+	@Html.BSLabelFor("page_description", "Description")
+	<div class="col-lg-10">
+		@Html.ValidationMessageFor(model => model.page_description)
+		@Html.BSTextAreaFor(Model.page_description, 3, "page_description", "Description")
+	</div>
+</div>
+<!-- /Description -->
+
+<!-- Page date/ -->
+<div class="form-group">
+	@Html.BSLabelFor("page_date", "Date of creation")
+	<div class="col-lg-10">
+		@Html.ValidationMessageFor(model => model.page_date)
+		@Html.BSEditorFor(BSEditorForExtension.BSInputTypes.date, "page_date", "Date of creation")
+	</div>
+</div>
+<!-- /Page date -->
+
+<!-- Page content/ -->
+<div class="form-group">
+	<input type="hidden" name="page_content" id="page_content" value=" " />
+</div>
+<!-- /Page content -->
+
+<!-- Wysiwyg Editor/ -->
+<div class="form-group">
+	@Html.BSLabelFor("page_content", "Content")
+	<div class="col-lg-10">
+		@Html.Partial("_WysiwygEditor", (Model.page_content != null) ? Model.page_content.ToString() : "Contenido de la publicación...")
+	</div>
+</div>
+<!-- /Wysiwyg Editor -->
+
+<!-- Imagen/ -->
+<div class="form-group">
+    @Html.BSLabelFor("page_Image", "Image")
+    <div class="col-lg-10">
+        <input name="page_image" type="file" id="exampleInputFile" accept="image/*">
+    </div>
+</div>
+<!-- /Imagen -->
+
+<!-- Visible/ -->
+<div class="form-group">
+	@Html.BSLabelFor("page_content", "Visible")
+	<div class="col-sm-offset-2 col-sm-10">
+		<div class="checkbox">
+			@*<input type="checkbox" id="page_visible" name="page_visible">*@
+			@Html.CheckBox("page_visible", Model.page_visible)
+		</div>
+	</div>
+</div>
+<!-- /Visible -->
+
+<!-- Categories/ -->
+@Html.Partial("_FormPage_Categories", (new ChiwasEngine.Models.ChiwasEngineContext()).Categories.ToList())
+<!-- /Categories -->
+
+@if (Model.Categories.Count > 0)
+{
+
+<script type="text/javascript">
+	@foreach (var item in Model.Categories)
+	{
+	<text>$("#category_@item.category_id").attr('checked', true);</text>
+	}
+</script>
+}
+@Html.BSButtonFor("Save", "$('#editor').cleanHtml(); $('#page_content').val($('#editor').html())", BSButtonForExtensions.BSButtonClass.primary, BSButtonForExtensions.BSButtonType.submit)

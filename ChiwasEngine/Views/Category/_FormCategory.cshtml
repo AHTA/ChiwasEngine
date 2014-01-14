@@ -1,0 +1,29 @@
+﻿@model ChiwasEngine.Models.Categories
+
+@using (Html.BeginForm("Create", "Category", FormMethod.Post, new { @class = "form-horizontal", role = "Form" }))
+{
+    @Html.ValidationSummary(true)
+
+    <!-- Name/ -->
+    <div class="form-group">
+        @Html.BSLabelFor("category_name", "Name")
+        <div class="col-lg-10">
+            @Html.ValidationMessageFor(model => model.category_name)
+            @Html.BSEditorFor(Model.category_name, BSEditorForExtension.BSInputTypes.text, "category_name", "Name")
+        </div>
+    </div>
+    <!-- /Name -->
+    
+    <!-- Description/ -->
+    <div class="form-group">
+        @Html.BSLabelFor("category_description", "Description")
+        <div class="col-lg-10">
+            @Html.ValidationMessageFor(model => model.category_description)
+            @Html.BSEditorFor(Model.category_description, BSEditorForExtension.BSInputTypes.text, "category_description", "Description")
+        </div>
+    </div>
+    <!-- /Description -->
+    
+    @Html.BSButtonFor("Save", null, BSButtonForExtensions.BSButtonClass.primary, BSButtonForExtensions.BSButtonType.submit)
+    
+}

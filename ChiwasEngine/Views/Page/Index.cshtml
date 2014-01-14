@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ChiwasEngine.Models.Pages>
+
+@{
+    ViewBag.Title = "List of pages";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.BSButtonFor("Create New", "location.href='Page/Create'", BSButtonForExtensions.BSButtonClass.primary)
+</p>
+
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Autor
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Date of creation
+            </th>
+            <th>
+                Modified
+            </th>
+            <th>
+                Visible
+            </th>
+            <th>
+                Options
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.page_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserProfile.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.page_title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.page_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.page_modified)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.page_visible)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.page_id }) |
+                    <a href="#" onclick="window.open('@Url.Action("Details", new { id = item.page_id })', 'nuevo', 'directories=no, location=no, menubar=no, scrollbars=yes, statusbar=no, tittlebar=no, width=400, height=400')">Details</a> |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.page_id })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

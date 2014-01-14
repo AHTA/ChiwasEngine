@@ -1,0 +1,22 @@
+﻿@model ChiwasEngine.Models.Pages
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<!-- Form edit/ -->
+@using (Html.BeginForm("Edit", "Page", FormMethod.Post, new { @class = "form-horizontal", role = "Form", enctype = "multipart/form-data" }))
+{
+    @Html.Partial("_FormPage")
+}
+<!-- Form edit/ -->
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

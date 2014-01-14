@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ChiwasEngine.Models.Categories>
+
+@{
+    ViewBag.Title = "List of categories";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.BSButtonFor("Create New", "location.href='Category/Create'", BSButtonForExtensions.BSButtonClass.primary)
+</p>
+
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Pages
+            </th>
+            <th>
+                Options
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category_description)
+                </td>
+                <td>
+                    @item.Pages.Count()
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.category_id }) |
+                    <a href="#" onclick="window.open('@Url.Action("Details", new { id = item.category_id })', 'nuevo', 'directories=no, location=no, menubar=no, scrollbars=yes, statusbar=no, tittlebar=no, width=400, height=400')">Details</a> |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.category_id })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

@@ -1,0 +1,19 @@
+﻿@model ChiwasEngine.Models.Categories
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete <abbr title="Delete">@Model.category_name</abbr>?</h3>
+
+@Html.Partial("_CategoryDetails")
+
+@using (Html.BeginForm())
+{
+    @Html.BSButtonFor("Eliminar", null, BSButtonForExtensions.BSButtonClass.danger, BSButtonForExtensions.BSButtonType.submit)
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}

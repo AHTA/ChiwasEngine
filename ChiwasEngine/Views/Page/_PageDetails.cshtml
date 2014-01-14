@@ -1,0 +1,31 @@
+﻿@model ChiwasEngine.Models.Pages
+
+<dl>
+    <dt>@Html.BSLabelFor("page_title", "Title", null)</dt>
+    <dd>@Html.DisplayFor(model => model.page_title)</dd>
+
+    <dt>@Html.BSLabelFor("UserName", "User", null)</dt>
+    <dd>@Html.DisplayFor(model => model.UserProfile.UserName)</dd>
+
+    <dt>@Html.BSLabelFor("page_date", "Creation", null)</dt>
+    <dd>@Html.DisplayFor(model => model.page_date)</dd>
+
+    <dt>@Html.BSLabelFor("page_date", "Modifified", null)</dt>
+    <dd>@Html.DisplayFor(model => model.page_modified)</dd>
+
+    <dt>@Html.BSLabelFor("page_Content", "Content", null)</dt>
+    <dd><pre>@Html.Raw(Model.page_content)</pre></dd>
+
+    <dt>@Html.BSLabelFor("page_image", "Image", null)</dt>
+    <dd><a href="@Url.Content("~/Content/uploads/" + Model.page_image)" target="_blank">@Model.page_image</a></dd>
+
+    <dt>@Html.BSLabelFor("page_visible", "Visible", null)</dt>
+    <dd>@Html.DisplayFor(model => model.page_visible)</dd>
+
+    <dt>@Html.BSLabelFor("page_image", "Categories", null)</dt>
+    @foreach (var item in Model.Categories)
+    {
+        <dd>@item.category_name</dd>
+    }
+</dl>
+

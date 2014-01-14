@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
+
+  <mvcSiteMapNode title="Dashboard" controller="Home" action="Index">
+
+    <mvcSiteMapNode controller="Page" action="Index" title="Pages" >
+      <mvcSiteMapNode controller="Page" action="Create" title="Create" />
+      <mvcSiteMapNode controller="Page" action="Edit" title="Edit" />
+      <mvcSiteMapNode controller="Page" action="Delete" title="Delete" />
+      <mvcSiteMapNode controller="Page" action="Details" title="Details" />
+    </mvcSiteMapNode>
+
+    <mvcSiteMapNode controller="Category" action="Index" title="Categories">
+      <mvcSiteMapNode controller="Category" action="Create" title="Create" />
+      <mvcSiteMapNode controller="Category" action="Edit" title="Edit" />
+      <mvcSiteMapNode controller="Category" action="Delete" title="Delete" />
+      <mvcSiteMapNode controller="Category" action="Details" title="Details" />
+    </mvcSiteMapNode>
+
+    <mvcSiteMapNode controller="Account" action="Profile" title="Profile" visibility="SiteMapPathHelper,!*">
+      <mvcSiteMapNode controller="Account" action="ChangePassword" title="Change password" />
+    </mvcSiteMapNode>
+    
+  </mvcSiteMapNode>
+
+
+
+</mvcSiteMap>

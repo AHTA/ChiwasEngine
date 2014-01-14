@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Demo";
+}
+
+<h2>Demo</h2>
+
+
+
+<br />
+
+@foreach (var item in (new ChiwasEngine.Models.ChiwasEngineContext().UserProfiles.ToList()))
+{
+    @item.UserId<text> : </text>@item.UserName
+}

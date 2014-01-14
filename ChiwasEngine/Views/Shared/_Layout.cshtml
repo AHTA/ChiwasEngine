@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Chiwas Framework</title>
+
+    <!-- Bootstrap core CSS -->
+    @Styles.Render("~/Content/bootstrap")
+
+    <!-- Custom styles for this template -->
+    @Styles.Render("~/Content/css")
+
+    <!-- JQuery -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+
+    <!-- Bootstrap core JS --> 
+    @Scripts.Render("~/js/bootstrap")
+
+    <!-- Plugins Scripts and Styles -->
+    @RenderSection("Plugins", required: false)
+
+    <!-- Custom Scripts -->
+    @RenderSection("Scripts", required: false)
+
+  </head>
+
+  <body>
+  
+    <!-- /NavBar -->    
+    @Html.Partial("~/Views/Shared/WebParts/_NavBar.cshtml")
+    <!-- NavBar/ -->
+
+    <!-- /Header -->
+    <div class="chf-header">
+        <div class="container">
+            <h1>
+                @ViewBag.MainTitle</h1>
+            <p>
+                @ViewBag.MainMessage</p>
+        </div>
+    </div>
+    <!-- /Header -->
+
+    <!-- /Breadcrumbs -->
+    <div class="chf-Breadcrumbs">
+        <div class="container">
+            @Html.MvcSiteMap().SiteMapPath()
+        </div>
+    </div>
+    <!-- Breadcrumbs/ -->
+    
+      <!-- /container -->
+    <div class="container">
+        <div class="row">
+
+            @*@Html.Partial("~/Views/Shared/WebParts/_SideBar.cshtml")*@
+
+            <div class="col-lg-12">
+                @RenderBody()
+            </div>
+        </div>
+
+          
+
+        @*<footer>
+          <p>&copy; Company 2013</p>
+        </footer>*@
+    </div>
+    <!-- container/ -->
+
+  </body>
+</html>

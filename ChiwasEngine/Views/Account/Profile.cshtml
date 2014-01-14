@@ -1,0 +1,47 @@
+﻿@model ChiwasEngine.Models.ProfileModel
+
+@{
+	ViewBag.Title = "Profile";
+}
+<div class="row">
+	
+	@Html.Partial("_SideBarAccount")
+
+	<div class="col-md-9">
+		<h2>@ViewBag.Title</h2>
+			
+		<!-- Form edit/ -->
+		@using (Html.BeginForm("Profile", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "Form" }))
+		{
+			@Html.ValidationSummary(true)
+
+			<!-- Public user name/ -->
+			<div class="form-group">
+				@Html.BSLabelFor("Email", "Public user name", "col-lg-3")
+				<div class="col-lg-6">
+					@Html.ValidationMessageFor(model => model.PublicUserName)
+					@Html.BSEditorFor(Model.PublicUserName, BSEditorForExtension.BSInputTypes.text, "PublicUserName", "Public user name")
+				</div>
+			</div>
+			<!-- /Public user name -->
+	  
+			<!-- Email/ -->
+			<div class="form-group">
+				@Html.BSLabelFor("Email", "User email", "col-lg-3")
+				<div class="col-lg-6">
+					@Html.ValidationMessageFor(model => model.Email)
+					@Html.BSEditorFor(Model.Email, BSEditorForExtension.BSInputTypes.text, "Email", "User email")
+				</div>
+			</div>
+			<!-- /Email -->
+	  
+			<p>
+				@Html.BSButtonFor("Save", "", BSButtonForExtensions.BSButtonClass.primary, BSButtonForExtensions.BSButtonType.submit)
+			</p>
+		}
+		<!-- Form edit/ -->
+
+		
+	</div>
+</div>
+

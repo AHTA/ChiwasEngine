@@ -1,0 +1,19 @@
+﻿@model ChiwasEngine.Models.Categories
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<!-- Form edit/ -->
+@Html.Partial("_FormCategory")
+<!-- Form edit/ -->
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

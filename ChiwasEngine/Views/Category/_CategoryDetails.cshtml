@@ -1,0 +1,10 @@
+﻿@model ChiwasEngine.Models.Categories
+
+<dl>
+    <dt>@Html.BSLabelFor("category_name", "Name", null)</dt>
+    <dd>@Html.DisplayFor(model => model.category_name)</dd>
+
+    <dt>@Html.BSLabelFor("category_description", "Description", null)</dt>
+    <dd>@Html.DisplayFor(model => model.category_description)</dd>
+</dl>
+
