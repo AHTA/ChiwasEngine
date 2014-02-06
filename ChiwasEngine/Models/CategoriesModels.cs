@@ -2,10 +2,12 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Mvc;
+using ChiwasEngine.Filters;
 
 namespace ChiwasEngine.Models
 {
     [Bind(Exclude = "category_id")]
+    [InitializeSimpleMembershipAttribute]
     public partial class Categories
     {
 
