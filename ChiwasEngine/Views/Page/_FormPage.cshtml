@@ -73,7 +73,6 @@
 
 @if (Model.Categories.Count > 0)
 {
-
 <script type="text/javascript">
 	@foreach (var item in Model.Categories)
 	{
@@ -81,4 +80,5 @@
 	}
 </script>
 }
-@Html.BSButtonFor("Save", "$('#editor').cleanHtml(); $('#page_content').val($('#editor').html())", BSButtonForExtensions.BSButtonClass.primary, BSButtonForExtensions.BSButtonType.submit)
+
+@Html.BSButtonFor("Save", "$('#page_content').val($('#editor').code())", BSButtonForExtensions.BSButtonClass.primary, BSButtonForExtensions.BSButtonType.submit)

@@ -16,7 +16,7 @@ namespace ChiwasEngine.Controllers
         // GET: /Home/
         public HomeController()
         {
-            ViewBag.MainMessage = "Bienvenido a Chiwas Framework un administrador de contenido ¡Fácil y Ruidoso!";
+            ViewBag.MainMessage = "Bienvenido a Chiwas Engine es un administrador de contenido ¡Fácil y Ruidoso!";
             ViewBag.MainTitle = "Dashboard";
         }
 
