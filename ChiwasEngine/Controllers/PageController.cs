@@ -47,12 +47,12 @@ namespace ChiwasEngine.Controllers
 		[ValidateInput(false)]
 		public ActionResult Create(Pages postsmodels, FormCollection collection)
 		{
-            //Completando datos
+			//Completando datos
 			postsmodels.page_modified = DateTime.Now;
 			postsmodels.UserProfile = db.UserProfiles.FirstOrDefault(item => item.UserName.ToLower() == User.Identity.Name.ToLower());
-            postsmodels.page_visible = postsmodels.page_visible;
+			postsmodels.page_visible = postsmodels.page_visible;
 
-            //Agregando categorias
+			//Agregando categorias
 			foreach (var category in db.Categories.ToList())
 			{
 				if (collection["category_" + category.category_id] != null)
@@ -64,20 +64,20 @@ namespace ChiwasEngine.Controllers
 				}
 			}
 
-            //Guardando imagen
-            var file = Request.Files[0];
+			//Guardando imagen
+			var file = Request.Files["page_image"];
 
-            if (file != null && file.ContentLength > 0)
-            {
-                var fileName = DateTime.Now.ToFileTime() + System.IO.Path.GetExtension(file.FileName);
-                var path = System.IO.Path.Combine(Server.MapPath("~/Content/uploads/"), fileName);
+			if (file != null && file.ContentLength > 0)
+			{
+				var fileName = DateTime.Now.ToFileTime() + System.IO.Path.GetExtension(file.FileName);
+				var path = System.IO.Path.Combine(Server.MapPath("~/Content/uploads/"), fileName);
 
-                postsmodels.page_image = fileName;
+				postsmodels.page_image = fileName;
 
-                file.SaveAs(path);
-            }
+				file.SaveAs(path);
+			}
 
-            //Validando modelo
+			//Validando modelo
 			if (ModelState.IsValid)
 			{
 				postsmodels.page_title = postsmodels.page_title.Trim();
@@ -109,23 +109,23 @@ namespace ChiwasEngine.Controllers
 		[ValidateInput(false)]
 		public ActionResult Edit(int id, Pages postsmodels, FormCollection collection)
 		{
-            //Buscando pagina
+			//Buscando pagina
 			Pages pagina = db.Pages.Find(id);
 			if (pagina == null)
 			{
 				return HttpNotFound();
 			}
 
-            //Completando datos
+			//Completando datos
 			pagina.page_content = postsmodels.page_content.Trim();
 			pagina.page_title = postsmodels.page_title.Trim();
-            pagina.page_description = postsmodels.page_description.Trim();
+			pagina.page_description = postsmodels.page_description.Trim();
 			pagina.page_visible = postsmodels.page_visible;
 			pagina.page_modified = DateTime.Now;
 
 			pagina.Categories.Clear();
 
-            //Agregando categorias
+			//Agregando categorias
 			foreach (var category in db.Categories.ToList())
 			{
 				if (collection["category_" + category.category_id] != null)
@@ -137,20 +137,20 @@ namespace ChiwasEngine.Controllers
 				}
 			}
 
-            //Guardando imagen
-            var file = Request.Files[0];
+			//Guardando imagen
+			var file = Request.Files["page_image"];
 
-            if (file != null && file.ContentLength > 0)
-            {
-                var fileName = DateTime.Now.ToFileTime() + System.IO.Path.GetExtension(file.FileName);
-                var path = System.IO.Path.Combine(Server.MapPath("~/Content/uploads/"), fileName);
+			if (file != null && file.ContentLength > 0)
+			{
+				var fileName = DateTime.Now.ToFileTime() + System.IO.Path.GetExtension(file.FileName);
+				var path = System.IO.Path.Combine(Server.MapPath("~/Content/uploads/"), fileName);
 
-                pagina.page_image = fileName;
+				pagina.page_image = fileName;
 
-                file.SaveAs(path);
-            }
+				file.SaveAs(path);
+			}
 
-            //Validando modelo
+			//Validando modelo
 			if (ModelState.IsValid)
 			{
 				db.Entry(pagina).State = EntityState.Modified;
