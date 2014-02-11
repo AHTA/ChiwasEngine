@@ -40,7 +40,7 @@ namespace ChiwasEngine.Controllers
 		public ActionResult Create()
 		{
 			//dd/mm/yyyy
-			return View(new Pages() { page_date = DateTime.Now });
+            return View(new Pages() { page_date = DateTime.Now });
 		}
 
 		[HttpPost]
@@ -50,7 +50,6 @@ namespace ChiwasEngine.Controllers
 			//Completando datos
 			postsmodels.page_modified = DateTime.Now;
 			postsmodels.UserProfile = db.UserProfiles.FirstOrDefault(item => item.UserName.ToLower() == User.Identity.Name.ToLower());
-			postsmodels.page_visible = postsmodels.page_visible;
 
 			//Agregando categorias
 			foreach (var category in db.Categories.ToList())
@@ -122,6 +121,7 @@ namespace ChiwasEngine.Controllers
 			pagina.page_description = postsmodels.page_description.Trim();
 			pagina.page_visible = postsmodels.page_visible;
 			pagina.page_modified = DateTime.Now;
+            pagina.page_date = postsmodels.page_date;
 
 			pagina.Categories.Clear();
 
