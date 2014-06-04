@@ -5,8 +5,6 @@ using System.Web;
 
 using ChiwasEngine.Models;
 using System.Data.Entity;
-using Microsoft.Data.Schema.SchemaModel;
-using Microsoft.Data.Schema;
 
 namespace ChiwasEngine.Models
 {
