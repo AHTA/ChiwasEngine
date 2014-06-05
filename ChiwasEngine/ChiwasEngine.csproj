@@ -219,6 +219,7 @@
     <Content Include="Content\plugins\Summernote\css\summernote.css" />
     <Content Include="Content\plugins\Summernote\js\summernote.js" />
     <Content Include="Content\plugins\Summernote\js\summernote.min.js" />
+    <Content Include="Content\uploads\Readme.txt" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
@@ -260,7 +261,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -304,6 +304,7 @@
     <Content Include="Views\Account\_SideBarAccount.cshtml" />
     <Content Include="Views\Page\_PageDetails.cshtml" />
     <Content Include="Views\Category\_CategoryDetails.cshtml" />
+    <None Include="Properties\PublishProfiles\ChiwasEngine.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201401081659467_Migracion1.resx">
