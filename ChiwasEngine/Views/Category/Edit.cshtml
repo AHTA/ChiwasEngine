@@ -1,4 +1,4 @@
-﻿@model ChiwasEngine.Models.Categories
+﻿@model ChiwasEngine.Models.EditCategoryModel
 
 @{
     ViewBag.Title = "Edit";
@@ -9,7 +9,10 @@
 <!-- Form create/ -->
 @using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { @class = "form-horizontal", role = "Form" }))
 {
-    @Html.Partial("_FormCategory")
+    
+    @Html.Partial("_FormCategory", Model.getCategory())
+    
+    @Html.HiddenFor(model => model.category_id)
 }
 <!-- /Form create -->
 

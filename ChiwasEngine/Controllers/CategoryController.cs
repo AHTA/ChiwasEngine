@@ -9,6 +9,7 @@ using ChiwasEngine.Models;
 
 namespace ChiwasEngine.Controllers
 {
+    [Authorize]
     public class CategoryController : Controller
     {
         private ChiwasEngineContext db = new ChiwasEngineContext();
@@ -74,18 +75,18 @@ namespace ChiwasEngine.Controllers
             {
                 return HttpNotFound();
             }
-            return View(categoriesmodels);
+            return View(new EditCategoryModel(categoriesmodels));
         }
 
         //
         // POST: /Category/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Categories categoriesmodels)
+        public ActionResult Edit(EditCategoryModel categoriesmodels)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(categoriesmodels).State = EntityState.Modified;
+                db.Entry(categoriesmodels.getCategory()).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace ChiwasEngine.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         //
