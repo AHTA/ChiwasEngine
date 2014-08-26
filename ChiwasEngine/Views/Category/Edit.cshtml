@@ -6,9 +6,12 @@
 
 <h2>Edit</h2>
 
-<!-- Form edit/ -->
-@Html.Partial("_FormCategory")
-<!-- Form edit/ -->
+<!-- Form create/ -->
+@using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { @class = "form-horizontal", role = "Form" }))
+{
+    @Html.Partial("_FormCategory")
+}
+<!-- /Form create -->
 
 <div>
     @Html.ActionLink("Back to List", "Index")
