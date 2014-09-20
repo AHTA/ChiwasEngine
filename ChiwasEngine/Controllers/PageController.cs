@@ -188,24 +188,5 @@ namespace ChiwasEngine.Controllers
 			db.Dispose();
 			base.Dispose(disposing);
 		}
-
-		public ActionResult Demo()
-		{
-			Models.Pages pagina = new Pages()
-			{
-				page_content = "Contenido",
-				page_date = DateTime.Now,
-				page_modified = DateTime.Now,
-				page_title = "Titulo",
-				page_visible = true,
-				UserProfile = db.UserProfiles.FirstOrDefault(item => item.UserName == User.Identity.Name),
-				Categories = db.Categories.ToList()
-			};
-
-			db.Pages.Add(pagina);
-			db.SaveChanges();
-
-			return View();
-		}
 	}
 }
