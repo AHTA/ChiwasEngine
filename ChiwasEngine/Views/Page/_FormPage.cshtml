@@ -24,9 +24,9 @@
 
 <!-- Page date/ -->
 <div class="form-group">
-    @Html.BSLabelFor("page_date_label", "Date of creation")
+    @Html.BSLabelFor("page_date_label", "Date of creation ")
     <div class='col-lg-10'>
-        <input name="page_date" id="page_date" type="text" class="form-control" />
+        <input name="page_date" id="page_date" type="text" class="form-control" data-date-format="DD/MM/YYYY HH:mm" />
     </div>
 </div>
 <!-- /Page date -->
@@ -90,7 +90,11 @@
 
 <script type="text/javascript">
     $(function () {
-        $('#page_date').datetimepicker();
-        $('#page_date').data("DateTimePicker").setDate("@Model.page_date.ToString("MM/dd/yyyy HH:mm")");
+        $('#page_date').datetimepicker({
+            showToday: true,
+            language: 'en',
+            dateFormat: 'dd/MM/yyyy HH:mm',
+            defaultDate: "@DateTime.Now.ToString("dd/MM/yyyy hh:mm")",
+        });
     });
 </script>

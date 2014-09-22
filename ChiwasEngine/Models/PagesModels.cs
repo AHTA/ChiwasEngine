@@ -20,6 +20,7 @@ namespace ChiwasEngine.Models
         public int page_id { get; set; }
 
         [Required]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime page_date { get; set; }
 
         [AllowHtml]
