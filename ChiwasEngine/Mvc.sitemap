@@ -19,6 +19,9 @@
       <mvcSiteMapNode controller="Category" action="Details" title="Details" />
     </mvcSiteMapNode>
 
+    <mvcSiteMapNode controller="Configuration" action="Index" title="Configuracion">
+    </mvcSiteMapNode>
+
     <mvcSiteMapNode controller="Account" action="Profile" title="Profile" visibility="SiteMapPathHelper,!*">
       <mvcSiteMapNode controller="Account" action="ChangePassword" title="Change password" />
     </mvcSiteMapNode>

@@ -1,17 +1,51 @@
 ﻿@model String
-<!-- Informacion: http://hackerwins.github.io/summernote/-->
-<!-- Summernote css-js/ -->
-<script src="@Url.Content("~/Content/plugins/Summernote/js/summernote.min.js")"></script>
-<link href="@Url.Content("~/Content/plugins/Summernote/css/summernote.css")" rel="stylesheet" />
-<!-- /Summernote css-js -->
+@{
+    ChiwasEngine.Models.ChiwasEngineContext db = new ChiwasEngine.Models.ChiwasEngineContext();
+    ChiwasEngine.Models.Settings settings = new ChiwasEngine.Models.Settings(db);
+    string editor = settings.General.Editor;
+}
 
-<div id="editor">@Html.Raw(Model)</div>
+@if (editor == "CKEditor")
+{
+    <script src="@Url.Content("~/Content/plugins/ckeditor/ckeditor.js")"></script>
+    <script src="@Url.Content("~/Content/plugins/ckeditor/adapters/jquery.js")"></script>
 
-<script>
-    $(document).ready(function () {
-        $('#editor').summernote({
-            height: 300,   //set editable area's height
-            focus: true    //set focus editable area after Initialize summernote
+    <script>
+        $(document).ready(function () {
+            $('textarea#editor').ckeditor();
         });
-    });
-</script>
+
+        function loadHtmlContent() {
+            $('#page_content').val($('#editor').val())
+        }
+    </script>
+    
+    <textarea class="editor" cols="80" id="editor" name="editor" rows="10">
+        @Html.Raw(Model)
+    </textarea>
+}
+else
+{
+    <!-- Summernote css-js/ -->
+    <script src="@Url.Content("~/Content/plugins/Summernote/js/summernote.min.js")"></script>
+    <link href="@Url.Content("~/Content/plugins/Summernote/css/summernote.css")" rel="stylesheet" />
+    <!-- /Summernote css-js -->
+
+    <script>
+
+        function loadHtmlContent() {
+            $('#page_content').val($('#editor').code())
+        }
+    </script>
+    
+    <div id="editor">@Html.Raw(Model)</div>
+
+    <script>
+        $(document).ready(function () {
+            $('#editor').summernote({
+                height: 300,   //set editable area's height
+                focus: true    //set focus editable area after Initialize summernote
+            });
+        });
+    </script>
+}

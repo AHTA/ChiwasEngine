@@ -80,8 +80,7 @@
 </script>
 }
 
-@Html.BSButtonFor("Save", "$('#page_content').val($('#editor').code())", BSButtonForExtensions.BSButtonClass.primary, BSButtonForExtensions.BSButtonType.submit)
-
+@Html.BSButtonFor("Save", "loadHtmlContent()", BSButtonForExtensions.BSButtonClass.primary, BSButtonForExtensions.BSButtonType.submit)
 
 <!-- /Scripts-CSS Bootstrap Datetimepicker -->
 <link href="@Url.Content("~/Content/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css")" rel="stylesheet" />

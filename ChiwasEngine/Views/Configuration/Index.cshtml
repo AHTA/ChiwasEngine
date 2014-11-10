@@ -1,0 +1,35 @@
+﻿@using ChiwasEngine.Models;
+@model ChiwasEngine.Models.ConfigurationModel
+@{
+    ViewBag.Title = "Settings";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Settings", "Configuration", FormMethod.Post, new { @class = "form-horizontal", role = "Form" }))
+{
+    <!-- Editor -->
+    <div class="form-group">
+        @Html.BSLabelFor("settings_editor", "Editor")
+        <div class="col-lg-10">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="Editor" id="optionsRadios1" value="Summernote" @(Model.Editor == "Summernote" ? "checked" : "")>
+                    Summernote &mdash; Super Simple WYSIWYG Editor on Bootstrap (<a href="http://hackerwins.github.io/summernote/" target="_blank">Info</a>).
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="Editor" id="optionsRadios2" value="CKEditor" @(Model.Editor == "CKEditor" ? "checked" : "")>
+                    CKEditor &mdash; Advanced Open Source HTML editor  (<a href="http://ckeditor.com/" target="_blank">Info</a>).
+                </label>
+            </div>
+        </div>
+    </div>
+    <!-- /Editor -->
+
+    <!-- Save -->
+    @Html.BSButtonFor("Save", null, BSButtonForExtensions.BSButtonClass.primary, BSButtonForExtensions.BSButtonType.submit)
+    <!-- /Save -->
+    
+}

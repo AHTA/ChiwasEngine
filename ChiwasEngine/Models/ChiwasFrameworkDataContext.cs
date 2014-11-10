@@ -8,28 +8,35 @@ using System.Data.Entity;
 
 namespace ChiwasEngine.Models
 {
-    public class ChiwasEngineContext : System.Data.Entity.DbContext
+    public interface IChiwasEngineContext
+    {
+        DbSet<Pages> Pages { get; set; }
+        DbSet<Categories> Categories { get; set; }
+        DbSet<UserProfiles> UserProfiles { get; set; }
+        DbSet<Setting> Settings { get; set; }
+        int SaveChanges();
+    }
+
+    public class ChiwasEngineContext : DbContext, IChiwasEngineContext
     {
         public ChiwasEngineContext() : base("DefaultConnection") { }
 
         public DbSet<Pages> Pages { get; set; }
         public DbSet<Categories> Categories { get; set; }
         public DbSet<UserProfiles> UserProfiles { get; set; }
+        public DbSet<Setting> Settings { get; set; }
 
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Setting>()
+                        .HasKey(x => new { x.Name, x.Type });
 
-        //    modelBuilder.Entity<Models.POCO.FacturaModels>()
-        //                .HasMany(c => c.FacturaDetalles)
-        //                .WithRequired(o => o.Factura)
-        //                .HasForeignKey(o => o.FacturaDetalleId)
-        //                .WillCascadeOnDelete(false);
-        //    modelBuilder.Entity<Models.POCO.FacturaModels>()
-        //        .HasOptional(f => f.FacturaDetalles)
-        //        .WithRequired()
-        //        .WillCascadeOnDelete();
+            modelBuilder.Entity<Setting>()
+                        .Property(x => x.Value)
+                        .IsOptional();
 
-        //}
+            base.OnModelCreating(modelBuilder);
+        }
 
     }
 }
